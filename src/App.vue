@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import { ref } from 'vue';
+  import { ref, onBeforeMount } from 'vue';
 
 	export default {
 		name: 'App',
@@ -55,7 +55,7 @@
 				saveData();
 			}
 
-      function doneTodo (todo) {
+            function doneTodo (todo) {
 				todo.done = !todo.done
 				saveData();
 			}
@@ -69,6 +69,10 @@
 				const storageData = JSON.stringify(todos.value);
 				localStorage.setItem('todos', storageData);
 			}
+
+			onBeforeMount(() => {
+                alert(`간단한 todo리스트입니다.`);
+            });
 
 			return {
 				todos,
